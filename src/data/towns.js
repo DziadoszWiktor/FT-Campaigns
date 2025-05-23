@@ -1,4 +1,3 @@
-// Pełna lista miast Polski (możesz rozbudować wedle uznania)
 const towns = [
   "Warszawa", "Kraków", "Łódź", "Wrocław", "Poznań", "Gdańsk", "Szczecin", "Bydgoszcz",
   "Lublin", "Białystok", "Katowice", "Gdynia", "Częstochowa", "Radom", "Sosnowiec", "Toruń",

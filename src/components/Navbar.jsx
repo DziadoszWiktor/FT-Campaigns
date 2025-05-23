@@ -7,7 +7,6 @@ const Navbar = ({ emeraldBalance }) => {
   const [menuOpen, setMenuOpen] = useState(false);
   const location = useLocation();
 
-  // Zamknij menu po zmianie ścieżki
   useEffect(() => {
     setMenuOpen(false);
   }, [location.pathname]);

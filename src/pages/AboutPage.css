@@ -7,7 +7,6 @@
   padding: 34px 28px 24px 28px;
 }
 
-/* Responsive for mobile */
 @media (max-width: 600px) {
   .about-markdown-wrapper {
     max-width: 98vw;
@@ -18,7 +17,6 @@
   }
 }
 
-/* Markdown content tweaks */
 .about-markdown-wrapper h1,
 .about-markdown-wrapper h2,
 .about-markdown-wrapper h3 {

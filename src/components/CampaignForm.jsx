@@ -3,7 +3,6 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import './CampaignForm.css';
 
-// --- Add productId validation
 const CampaignSchema = Yup.object().shape({
   name: Yup.string().required("Campaign name is required."),
   productId: Yup.string().required("Product is required."),

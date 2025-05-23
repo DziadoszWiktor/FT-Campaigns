@@ -19,7 +19,6 @@ function App() {
   const [campaigns, setCampaigns] = useState([]);
   const [emeraldBalance, setEmeraldBalance] = useState(5000);
 
-  // Load campaigns & balance from storage
   useEffect(() => {
     const stored = localStorage.getItem(LS_KEY);
     if (stored) setCampaigns(JSON.parse(stored));
@@ -30,11 +29,11 @@ function App() {
   useEffect(() => {
     localStorage.setItem(LS_KEY, JSON.stringify(campaigns));
   }, [campaigns]);
+
   useEffect(() => {
     localStorage.setItem(BALANCE_KEY, emeraldBalance);
   }, [emeraldBalance]);
 
-  // Create campaign (deduct fund)
   const handleSubmitCampaign = (campaignData, { resetForm, setFieldError }) => {
     const fund = Number(campaignData.fund);
     if (fund > emeraldBalance) {
@@ -47,11 +46,9 @@ function App() {
     resetForm();
   };
 
-  // Edit campaign (adjust fund)
   const handleEditCampaign = (editedCampaign, { resetForm }) => {
     setCampaigns(prev => {
       const prevCamp = prev.find(c => c.id === editedCampaign.id);
-      // Zwróć stary fund, zabierz nowy fund
       let nextBalance = emeraldBalance + Number(prevCamp.fund) - Number(editedCampaign.fund);
       setEmeraldBalance(nextBalance);
       return prev.map(camp => camp.id === editedCampaign.id ? { ...editedCampaign } : camp);
@@ -59,7 +56,6 @@ function App() {
     resetForm();
   };
 
-  // Delete campaign (refund fund)
   const handleDeleteCampaign = (id) => {
     setCampaigns(prev => {
       const camp = prev.find(c => c.id === id);
