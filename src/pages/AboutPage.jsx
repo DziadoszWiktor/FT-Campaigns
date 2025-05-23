@@ -1,8 +1,23 @@
-const AboutPage = () => (
-  <div style={{ maxWidth: 500, margin: "0 auto", padding: 32 }}>
-    <h1>About</h1>
-    <p>aaaaaaaaaaaaaaaaaaaa</p>
-  </div>
-);
+import React, { useEffect, useState } from "react";
+import ReactMarkdown from "react-markdown";
+import "./AboutPage.css"; // import your CSS
+
+const AboutPage = () => {
+  const [markdown, setMarkdown] = useState("");
+
+  useEffect(() => {
+    fetch("/FT-Campaigns/README.md")
+      .then((res) => res.text())
+      .then(setMarkdown);
+  }, []);
+
+  return (
+    <div style={{ minHeight: "70vh", background: "#f9f9f9", padding: "2vw 0" }}>
+      <div className="about-markdown-wrapper">
+        <ReactMarkdown>{markdown}</ReactMarkdown>
+      </div>
+    </div>
+  );
+};
 
 export default AboutPage;

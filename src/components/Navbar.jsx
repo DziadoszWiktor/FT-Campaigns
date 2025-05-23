@@ -3,11 +3,11 @@ import logoPath from "../../public/cart.svg";
 import "./Navbar.css";
 import { useState, useEffect } from "react";
 
-const Navbar = () => {
+const Navbar = ({ emeraldBalance }) => {
   const [menuOpen, setMenuOpen] = useState(false);
   const location = useLocation();
 
-  // Zamyka menu po zmianie ścieżki (UX na mobile)
+  // Zamknij menu po zmianie ścieżki
   useEffect(() => {
     setMenuOpen(false);
   }, [location.pathname]);
@@ -37,6 +37,9 @@ const Navbar = () => {
         </ul>
       </div>
       <div className="navbar-right">
+        <span className="emerald-balance-square">
+          Emeralds: {emeraldBalance}
+        </span>
         <img src={logoPath} alt="Logo" className="navbar-logo" />
       </div>
     </nav>

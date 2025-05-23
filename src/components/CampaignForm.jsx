@@ -30,7 +30,7 @@ const CampaignForm = ({
     bid: "",
     fund: "",
     status: true,
-    town: towns[0] || "",
+    town: "",
     radius: "",
     ...initialValues,
   };
@@ -164,7 +164,8 @@ const CampaignForm = ({
             <div>
               <label className="campaign-form-label">Town *</label>
               <Field name="town" as="select" className="campaign-form-select">
-                {towns.map((t) => (
+                <option value="">Choose town...</option>
+                {towns && towns.length > 0 && towns.map((t) => (
                   <option value={t} key={t}>{t}</option>
                 ))}
               </Field>

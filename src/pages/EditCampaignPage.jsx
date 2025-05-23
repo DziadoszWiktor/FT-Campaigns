@@ -1,30 +1,26 @@
 import { useParams, useNavigate } from "react-router-dom";
 import CampaignForm from "../components/CampaignForm";
 
-const EditCampaignPage = ({ campaigns, towns, keywords, minBidAmount, onSubmit }) => {
+const EditCampaignPage = ({ campaigns, onSubmit, towns, keywords, minBidAmount }) => {
   const { id } = useParams();
   const navigate = useNavigate();
+  const campaign = campaigns.find(c => c.id === id);
 
-  const campaign = campaigns.find(c => String(c.id) === String(id));
-  if (!campaign) {
-    return <div style={{ color: "red" }}>Campaign not found.</div>;
-  }
-
-  const handleEdit = (values, helpers) => {
-    onSubmit({ ...values, id: campaign.id }, helpers);
-    navigate("/campaigns");
-  };
+  if (!campaign) return <div>Campaign not found</div>;
 
   return (
     <div style={{ maxWidth: 600, margin: "0 auto", padding: 32 }}>
-      <h2>Edit Campaign</h2>
+      <h1>Edit Campaign</h1>
       <CampaignForm
         initialValues={campaign}
+        onSubmit={(data, helpers) => {
+          onSubmit({ ...data, id }, helpers);
+          navigate("/campaigns");
+        }}
         towns={towns}
         keywordsList={keywords}
         minBidAmount={minBidAmount}
-        onSubmit={handleEdit}
-        onCancel={() => navigate("/campaigns")}
+        editMode
       />
     </div>
   );

@@ -1,0 +1,54 @@
+.about-markdown-wrapper {
+  max-width: 600px;
+  margin: 8px auto;
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 4px 36px #0002;
+  padding: 34px 28px 24px 28px;
+}
+
+/* Responsive for mobile */
+@media (max-width: 600px) {
+  .about-markdown-wrapper {
+    max-width: 98vw;
+    min-width: unset;
+    padding: 6vw 2vw 3vw 2vw;
+    border-radius: 0;
+    box-shadow: none;
+  }
+}
+
+/* Markdown content tweaks */
+.about-markdown-wrapper h1,
+.about-markdown-wrapper h2,
+.about-markdown-wrapper h3 {
+  margin-top: 1.6em;
+  margin-bottom: 0.7em;
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.about-markdown-wrapper ul,
+.about-markdown-wrapper ol {
+  margin-left: 1.1em;
+}
+
+.about-markdown-wrapper code,
+.about-markdown-wrapper pre {
+  background: #f5f5f5;
+  padding: 2px 6px;
+  border-radius: 6px;
+  font-family: "JetBrains Mono", "Menlo", "Monaco", monospace;
+  font-size: 0.98em;
+  word-break: break-word;
+  overflow-x: auto;
+}
+
+.about-markdown-wrapper a {
+  color: #1976d2;
+  text-decoration: underline;
+}
+
+.about-markdown-wrapper p {
+  margin: 0.65em 0;
+}
