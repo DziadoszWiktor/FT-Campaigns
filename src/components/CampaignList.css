@@ -1,7 +1,7 @@
 .campaign-list {
   display: flex;
   flex-direction: column;
-  gap: 48px;
+  gap: 24px;
   margin-top: 22px;
 }
 
@@ -16,8 +16,7 @@
   background: #fff;
   border-radius: 32px;
   box-shadow: 0 6px 40px #0002;
-  /* Remove left padding for flush-left image, keep right/top/bottom */
-  padding: 34px 38px 30px 0;
+  padding: 15px 32px 15px 0;
   max-width: 1200px;
   margin: 0 auto;
   transition: box-shadow 0.14s;
@@ -42,7 +41,6 @@
   justify-content: center;
   overflow: hidden;
   flex-shrink: 0;
-  /* Add a bit of margin so image is not touching the card border */
   margin-left: 18px;
 }
 
@@ -163,13 +161,13 @@
   .campaign-card__image {
     margin-bottom: 8px;
     align-self: flex-start;
-    margin-left: 18px; /* keep left margin for mobile */
+    margin-left: 18px;
   }
 }
 
 @media (max-width: 600px) {
   .campaign-card {
-    padding: 12px 2vw 12px 0; /* match left flush */
+    padding: 12px 2vw 12px 0;
     border-radius: 15px;
   }
   .campaign-card__title {

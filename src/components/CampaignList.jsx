@@ -21,7 +21,6 @@ const CampaignList = ({ campaigns, onDelete }) => {
               <Link className="campaign-card__title" to={`/campaigns/${camp.id}`}>
                 {camp.name}
               </Link>
-              {/* You can add short product/keywords here if wanted */}
             </div>
             <div
               className={`campaign-card__status${camp.status === true || camp.status === "on" ? " on" : " off"}`}
