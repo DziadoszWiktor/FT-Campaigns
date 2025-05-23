@@ -43,3 +43,8 @@ No local deploy commands required, just push to main branch
 ## 🔗 Live Demo
 
 https://dziadoszwiktor.github.io/FT-Campaigns/
+
+
+## 🔗 Project board
+
+https://miro.com/app/board/uXjVI3jRaZE=/?share_link_id=559710874924
