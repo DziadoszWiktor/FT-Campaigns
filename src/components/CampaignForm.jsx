@@ -3,8 +3,10 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import './CampaignForm.css';
 
+// --- Add productId validation
 const CampaignSchema = Yup.object().shape({
   name: Yup.string().required("Campaign name is required."),
+  productId: Yup.string().required("Product is required."),
   keywords: Yup.array().min(1, "At least one keyword is required."),
   bid: Yup.number().min(1, "Bid must be at least 1.").required(),
   fund: Yup.number().positive("Campaign fund is required and must be positive.").required(),
@@ -17,11 +19,13 @@ const CampaignForm = ({
   onSubmit,
   towns = [],
   keywordsList = [],
+  products = [],
   initialValues = {},
   onCancel,
 }) => {
   const defaultInitial = {
     name: "",
+    productId: "",
     keywords: [],
     bid: "",
     fund: "",
@@ -38,7 +42,6 @@ const CampaignForm = ({
     <Formik
       initialValues={defaultInitial}
       validationSchema={CampaignSchema}
-      // PRZEKAŻ helpers do onSubmit!
       onSubmit={(values, helpers) => onSubmit(values, helpers)}
     >
       {({ values, setFieldValue }) => {
@@ -60,11 +63,29 @@ const CampaignForm = ({
         return (
           <Form className="campaign-form-wrapper">
             <h2>{initialValues.name ? "Edit Campaign" : "Create Campaign"}</h2>
+
+            {/* Campaign Name */}
             <div>
               <label className="campaign-form-label">Campaign Name *</label>
               <Field name="name" className="campaign-form-input" />
               <ErrorMessage name="name" component="div" className="campaign-form-error" />
             </div>
+
+            {/* Product - below Campaign Name */}
+            <div>
+              <label className="campaign-form-label">Product *</label>
+              <Field as="select" name="productId" className="campaign-form-select">
+                <option value="">Choose product...</option>
+                {products && products.length > 0 && products.map((prod) => (
+                  <option value={prod.id} key={prod.id}>
+                    {prod.name}
+                  </option>
+                ))}
+              </Field>
+              <ErrorMessage name="productId" component="div" className="campaign-form-error" />
+            </div>
+
+            {/* Keywords */}
             <div style={{ marginTop: 10, position: "relative" }}>
               <label className="campaign-form-label">Keywords *</label>
               <div className="campaign-form-keywords-container">
@@ -115,16 +136,22 @@ const CampaignForm = ({
               )}
               <ErrorMessage name="keywords" component="div" className="campaign-form-error" />
             </div>
+
+            {/* Bid amount */}
             <div>
               <label className="campaign-form-label">Bid amount *</label>
               <Field name="bid" type="number" className="campaign-form-input" />
               <ErrorMessage name="bid" component="div" className="campaign-form-error" />
             </div>
+
+            {/* Campaign fund */}
             <div>
               <label className="campaign-form-label">Campaign fund *</label>
               <Field name="fund" type="number" className="campaign-form-input" />
               <ErrorMessage name="fund" component="div" className="campaign-form-error" />
             </div>
+
+            {/* Status */}
             <div>
               <label className="campaign-form-label">Status *</label>
               <Field name="status" as="select" className="campaign-form-select">
@@ -132,6 +159,8 @@ const CampaignForm = ({
                 <option value={false}>Off</option>
               </Field>
             </div>
+
+            {/* Town */}
             <div>
               <label className="campaign-form-label">Town *</label>
               <Field name="town" as="select" className="campaign-form-select">
@@ -141,11 +170,15 @@ const CampaignForm = ({
               </Field>
               <ErrorMessage name="town" component="div" className="campaign-form-error" />
             </div>
+
+            {/* Radius */}
             <div>
               <label className="campaign-form-label">Radius (km) *</label>
               <Field name="radius" type="number" className="campaign-form-input" />
               <ErrorMessage name="radius" component="div" className="campaign-form-error" />
             </div>
+
+            {/* Actions */}
             <div className="campaign-form-actions">
               <button type="submit" className="campaign-form-submit">
                 {initialValues.name ? "Save Changes" : "Create Campaign"}
